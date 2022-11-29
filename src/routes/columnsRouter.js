@@ -1,0 +1,14 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var columnsContollers = require("../controllers/columnsContollers");
+var tasksRouter_1 = require("./tasksRouter");
+var jsonParser = express_1["default"].json();
+var columnsRouter = express_1["default"].Router();
+columnsRouter.use('/:columnId/tasks', tasksRouter_1["default"]);
+columnsRouter.get('/', columnsContollers.getColumns);
+columnsRouter.get('/:columnId', columnsContollers.getColumnById);
+columnsRouter.post('/', jsonParser, columnsContollers.createColumn);
+columnsRouter.put('/:columnId', jsonParser, columnsContollers.updateColumn);
+columnsRouter["delete"]('/:columnId', columnsContollers.deleteColumn);
+exports["default"] = columnsRouter;

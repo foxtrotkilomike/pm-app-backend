@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var usersContollers = require("../controllers/usersContollers");
+var jsonParser = express_1["default"].json();
+var usersRouter = express_1["default"].Router();
+usersRouter.get('/', usersContollers.getUsers);
+usersRouter.get('/:id', usersContollers.getUserById);
+usersRouter.put('/:id', jsonParser, usersContollers.updateUser);
+usersRouter["delete"]('/:id', usersContollers.deleteUser);
+exports["default"] = usersRouter;

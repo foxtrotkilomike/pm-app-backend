@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var filesContollers = require("../controllers/filesContollers");
+var upload_1 = require("../middleWares/upload");
+var filesRouter = express_1["default"].Router();
+filesRouter.get('/:taskId/:fileName', filesContollers.getFile);
+filesRouter.get('/', filesContollers.findFiles);
+filesRouter.get('/:boardId', filesContollers.getFilesByBoard);
+filesRouter.post('/', upload_1.upload.single('file'), filesContollers.uploadFile);
+filesRouter["delete"]('/:fileId', filesContollers.deleteFile);
+exports["default"] = filesRouter;

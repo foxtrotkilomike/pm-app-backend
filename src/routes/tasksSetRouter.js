@@ -1,0 +1,10 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var tasksSetContollers = require("../controllers/tasksSetContollers");
+var jsonParser = express_1["default"].json();
+var tasksSetRouter = express_1["default"].Router();
+tasksSetRouter.patch('/', jsonParser, tasksSetContollers.updateSetOfTask);
+tasksSetRouter.get('/', tasksSetContollers.findTasks);
+tasksSetRouter.get('/:boardId', tasksSetContollers.getTasksByBoard);
+exports["default"] = tasksSetRouter;

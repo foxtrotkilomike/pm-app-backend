@@ -1,0 +1,12 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var tasksContollers = require("../controllers/tasksContollers");
+var jsonParser = express_1["default"].json();
+var tasksRouter = express_1["default"].Router();
+tasksRouter.get('/', tasksContollers.getTasks);
+tasksRouter.get('/:taskId', tasksContollers.getTaskById);
+tasksRouter.post('/', jsonParser, tasksContollers.createTask);
+tasksRouter.put('/:taskId', jsonParser, tasksContollers.updateTask);
+tasksRouter["delete"]('/:taskId', tasksContollers.deleteTask);
+exports["default"] = tasksRouter;

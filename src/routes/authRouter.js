@@ -1,0 +1,10 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var authContollers = require("../controllers/authContollers");
+var jsonParser = express_1["default"].json();
+var authRouter = express_1["default"].Router();
+authRouter.post('/signin', jsonParser, authContollers.signIn);
+authRouter.post('/signup', jsonParser, authContollers.signUp);
+authRouter.get('/check', authContollers.chek);
+exports["default"] = authRouter;

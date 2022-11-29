@@ -1,0 +1,10 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var columnsSetContollers = require("../controllers/columnsSetContollers");
+var jsonParser = express_1["default"].json();
+var columnsSetRouter = express_1["default"].Router();
+columnsSetRouter.get('/', columnsSetContollers.findColumns);
+columnsSetRouter.patch('/', jsonParser, columnsSetContollers.updateSetOfColumns);
+columnsSetRouter.post('/', jsonParser, columnsSetContollers.createSetOfColumns);
+exports["default"] = columnsSetRouter;

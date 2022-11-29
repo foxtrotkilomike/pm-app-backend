@@ -1,0 +1,14 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var boardsContollers = require("../controllers/boardsContollers");
+var columnsRouter_1 = require("./columnsRouter");
+var jsonParser = express_1["default"].json();
+var boardsRouter = express_1["default"].Router();
+boardsRouter.use('/:boardId/columns', columnsRouter_1["default"]);
+boardsRouter.get('/', boardsContollers.getBoards);
+boardsRouter.get('/:boardId', boardsContollers.getBoardById);
+boardsRouter.post('/', jsonParser, boardsContollers.createBoard);
+boardsRouter.put('/:boardId', jsonParser, boardsContollers.updateBoard);
+boardsRouter["delete"]('/:boardId', boardsContollers.deleteBoard);
+exports["default"] = boardsRouter;
